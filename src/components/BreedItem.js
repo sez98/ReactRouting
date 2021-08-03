@@ -1,13 +1,13 @@
 import React from 'react';
 
 const BreedItem = (props) => {
-         console.log(props);
+  console.log(props);
   return (
     <>
       <div>
-         Breed Items
-         <hr />
-         {props.match.params.name}
+        Breed Items
+        <hr />
+        {props.match.params.name}
       </div>
     </>
   );
