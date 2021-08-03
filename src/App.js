@@ -7,31 +7,32 @@ import {
   Link
 } from "react-router-dom";
 
+import Header from './components/header';
 import Home from "./components/Home";
+import Profile from "./components/Profile";
 import About from "./components/About";
 import Breeds from "./components/Breeds";
+import BreedItem from "./components/BreedItem"
 
 const App = () => {
   return (
     <>
-      <BrowserRouter>
-        <header>
-          HEADING WEBSITE
-          <hr />
-          <Link to={{
-            pathname:'/'
-              }}>Home</Link> -
-          <Link to={{
-            pathname:'/about'
-              }}>About</Link> - 
-          <Link to={{
-            pathname:'/breeds'
-              }}>Breeds</Link> - 
-        </header>
-        <hr />
-        <Route path="/" exact component={Home}/>
-        <Route path="/about" component={About}/>
-        <Route path="/breeds" component={Breeds}/>
+      <BrowserRouter>  
+        <Header />      
+        <div className="container">
+          <Switch>
+            {/* <Redirect from="/profile" to="/"/> */}
+            <Route path="/breeds/:name"  component={BreedItem}/>
+            <Route path="/breeds"  component={Breeds}/>
+            <Route path="/profile"  component={Profile}/>
+            <Route path="/about"  component={About}/>            
+            <Route path="/" exact component={Home}/>
+            <Route render={()=>(
+              <h3>Ooops page not found !!</h3>
+            )}/>
+          </Switch>
+        </div>
+        
       </BrowserRouter>
     </>
   );
