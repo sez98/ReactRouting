@@ -1,26 +1,31 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { profileData } from '../store/actions';
+import { profileData, usersData } from '../store/actions';
 
 const About = (props) => {
 
-  const profile = useSelector( state => state.profileData );
+  const profile = useSelector( state => state.profileData);
   const dispatch = useDispatch();
 
 
   const getProfiles = () => {
     dispatch(profileData())
   }
+  const getUsers = () => {
+    dispatch(usersData())
+  }
 
   console.log(profile)
+  // console.log(users)
   
   return (
     <>
       About
+
       <hr />
       <button onClick={() => getProfiles()}>
-        GetProfiles
+        Get Profiles
       </button>
       { profile && profile.profileData ?
           profile.profileData.map( item =>(
@@ -33,6 +38,20 @@ const About = (props) => {
           ))          
       :null}
 
+      <hr />
+      <button onClick={() => getUsers()}>
+        Get Users
+      </button>
+      { profile && profile.usersData ?
+          profile.usersData.map( item =>(
+            <div key={item.id}>
+              <hr />
+                <div>{item.id}. {item.name}</div>
+            </div>
+          ))          
+      :null}
+
+      
     </>
   );
 }
