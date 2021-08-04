@@ -17,7 +17,6 @@ const About = (props) => {
   }
 
   console.log(profile)
-  // console.log(users)
   
   return (
     <>
